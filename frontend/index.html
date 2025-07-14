@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>NexaMind Ultra</title>
+</head>
+<body>
+  <h1>Bem-vindo ao NexaMind Ultra</h1>
+  <button onclick="chamarAPI()">Chamar a API</button>
+  <pre id="resposta"></pre>
+
+  <script>
+    async function chamarAPI() {
+      try {
+        const resposta = await fetch('http://localhost:8000/'); // Troque a URL se tiver outra rota
+        const dados = await resposta.json();
+        document.getElementById('resposta').textContent = JSON.stringify(dados, null, 2);
+      } catch (erro) {
+        document.getElementById('resposta').textContent = 'Erro ao chamar a API.';
+        console.error(erro);
+      }
+    }
+  </script>
+</body>
+</html>
